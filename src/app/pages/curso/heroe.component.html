@@ -1,0 +1,110 @@
+
+<h1>Itehl Digital <small>Nombre del Curso</small> </h1>
+<hr>
+
+
+<div class="row text-right">
+  <div class="col">
+    <button class="btn btn-danger"
+            routerLink="/cursos">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+  </div>
+</div>
+
+
+
+<div class="row animated fadeIn faster">
+  <div class="col">
+
+    <form (ngSubmit)="guardar( f )"
+          #f="ngForm">
+
+      <div class="form-group">
+        <label>Firebase ID</label>
+        <input type="text"
+               class="form-control"
+               placeholder="Firebase ID"
+               [(ngModel)]="heroe.id"
+               name="id"
+               disabled="disabled">
+        <small class="form-text text-muted">Este campo es autogenerado</small>
+      </div>
+
+
+      <div class="form-group">
+          <label>Nombre</label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="Nombre del curso"
+                 [(ngModel)]="heroe.nombre"
+                 name="nombre"
+                 required>
+      </div>
+
+      <div class="form-group">
+          <label>Descripción</label>
+          <input type="text"
+                 class="form-control"
+                 [(ngModel)]="heroe.Descripcion"
+                 name="Descripción"
+                 placeholder="Descripción del curso">
+      </div>
+
+      <div class="form-group">
+        <label>Modalidad</label>
+        <br>
+
+        <button *ngIf="heroe.Modalidad" 
+                (click)="heroe.Modalidad = false"
+                class="btn btn-outline-success w-50" type="button">
+          <i class="fa fa-smile-wink"></i>
+          Online
+        </button>
+
+        <button *ngIf="!heroe.Modalidad" 
+                (click)="heroe.Modalidad = true"
+                class="btn btn-outline-danger w-50" type="button">
+            <i class="fa fa-dizzy"></i>
+            Privado
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label>Horas</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="heroe.Horas"
+               name="Horas"
+               placeholder="Duración en horas del curso">
+      </div>
+
+      <div class="form-group">
+        <label>Precio</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="heroe.Precio"
+               name="Precio"
+               placeholder="Precio del curso">
+      </div>
+
+
+
+      <hr>
+      <div class="form-group text-center">
+        <button type="submit"
+                class="btn btn-primary w-25">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      </div>
+
+
+    </form>
+
+
+  </div>
+</div>
+
+

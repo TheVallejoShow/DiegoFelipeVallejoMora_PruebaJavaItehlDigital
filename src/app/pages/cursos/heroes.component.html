@@ -1,0 +1,79 @@
+
+<h1>Listado de los Cursos</h1>
+<hr>
+
+
+<div class="row">
+  <div class="col text-right">
+    <button routerLink="/curso/nuevo"
+            class="btn btn-primary">
+      <i class="fa fa-plus"></i>
+      Agregar
+    </button>
+  </div>
+</div>
+
+
+<table *ngIf="!cargando && heroes.length > 0"
+       class="table mt-3 animated fadeIn faster animated fadeIn faster">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Modalidad</th>
+      <th scope="col">Horas</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Tools</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let heroe of heroes; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ heroe.nombre }}</td>
+      <td>{{ heroe.Descripcion }}</td>
+      <td>
+        
+        <label *ngIf="heroe.Modalidad" class="badge badge-success">Online</label>
+        <label *ngIf="!heroe.Modalidad" class="badge badge-danger">Privado</label>
+
+      </td>
+
+      <td>{{ heroe.Horas }}</td>
+      <td>{{ heroe.Precio }}</td>
+      <td>
+
+        <button class="btn btn-info mr-1"
+                [routerLink]="['/curso', heroe.id ]">
+          <i class="fa fa-pen"></i>
+        </button>
+
+        <button class="btn btn-danger"
+                (click)="borrarHeroe( heroe, i ) ">
+          <i class="fa fa-trash"></i>
+        </button>
+
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!cargando && heroes.length === 0"
+     class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div *ngIf="cargando" 
+     class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4 class="alert-heading">Cargando</h4>
+  <p>
+    <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+  </p>
+  <p class="mb-0">
+    Espere por favor
+  </p>
+</div>
